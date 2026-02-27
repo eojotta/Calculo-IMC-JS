@@ -13,8 +13,22 @@ const entradaDeDados = readline.createInterface({
 })
 
 //Entrada dos dados da pessoa
-entradaDeDados.question('Digite Seu peso')
-    let peso = pesoPessoa
+entradaDeDados.question('Digite Seu peso: ',function(peso){
+    let pesoPessoa = peso
 
-entradaDeDados.addListener.question('Digite sua altura')
-    let altura = alturaPessoa
+    entradaDeDados.question ('Digite sua altura: ',function(altura){
+    let alturaPessoa = altura
+    
+       let calculos  = require('./calculo.js')
+
+        let imc = calculos.calcularDados(peso, altura)
+        let status = calculos.indentificarStatus(imc)
+
+        console.log("Seu imc é : " + imc)
+        console.log('classificação : ' + status)
+
+        entradaDeDados.close()
+
+})
+
+})
